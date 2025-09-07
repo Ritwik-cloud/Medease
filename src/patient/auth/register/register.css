@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --primary-color: #000000;
+  --secondary-color: #FFFFFF;
+  --third-color: #0D8CF4;
+  --fourth-color: #3A559F;
+  --fifth-color: #DD4B39;
+  --border-radius: 12px;
+  --transition: all 0.3s ease-in-out;
+  --shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Outfit", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background-color: var(--secondary-color);
+}
+
+img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.container {
+  max-width: 1350px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+.registration {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, var(--secondary-color) 0%, var(--third-color) 100%);
+  padding: 125px 0;
+}
+
+.col50 {
+  max-width: 50%;
+  flex: 0 0 50%;
+  padding: 0 15px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--third-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+.register-card {
+  padding: 35px 60px;
+  background-color: var(--secondary-color);
+  border-radius: 32px;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+}
+
+.head {
+  margin-bottom: 27px;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="password"],
+input[type="date"],
+input[type="email"] {
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+  padding: 10px;
+  width: 100%;
+  font-size: 15px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--third-color);
+  box-shadow: 0px 0px 8px rgba(13, 140, 244, 0.3);
+}
+
+.gender-and-already {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.already > a > h4 {
+  color: var(--third-color);
+}
+
+.cmn-btn {
+  display: inline-block;
+  padding: 10px 0;
+  width: 100%;
+  background-color: var(--third-color);
+  text-align: center;
+  color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cmn-btn:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+.or {
+  display: flex;
+  justify-content: center;
+  margin: 25px 0;
+  font-weight: 500;
+}
+
+.btn2 {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cmn-btn2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 25px;
+  color: var(--secondary-color);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cmn-btn2:nth-child(1) {
+  background-color: var(--fourth-color);
+}
+
+.cmn-btn2:nth-child(2) {
+  background-color: var(--fifth-color);
+}
+
+.cmn-btn2:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-2px);
+}
+
+i {
+  color: var(--secondary-color);
+  font-size: 18px;
+}
+
+/* =========================================================
+   🌐 RESPONSIVE MEDIA QUERIES
+   ========================================================= */
+
+/* ----------- Laptop & Small Desktop (≤1339px) ----------- */
+@media (max-width: 1339px) {
+  .register-card {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .col50 img {
+    max-width: 600px;
+    object-fit: contain;
+  }
+}
+
+/* ----------- Tablets (≤992px) ----------- */
+@media (max-width: 992px) {
+  .row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .col50 {
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .register-card {
+    width: 100%;
+    padding: 30px 25px;
+  }
+}
+
+/* ----------- Mobile Devices (≤768px) ----------- */
+@media (max-width: 768px) {
+  .col50 figure,
+  .col50 img {
+    display: none;
+  }
+
+  .registration {
+    padding: 80px 0;
+  }
+
+  .register-card {
+    max-width: 90%;
+    padding: 25px 20px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+  }
+
+  input {
+    font-size: 15px;
+  }
+
+  .cmn-btn, .cmn-btn2 {
+    font-size: 15px;
+  }
+
+  .btn2 {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .cmn-btn2 {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ----------- Small Mobile Devices (≤480px) ----------- */
+@media (max-width: 480px) {
+  .registration {
+    padding: 50px 0;
+    /* padding: 100px; */
+  }
+
+  .register-card {
+    max-width: 100%;
+    padding: 20px 15px;
+    border-radius: 18px;
+    /* margin: 2rem; */
+  }
+
+  .head {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+
+  input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .cmn-btn, .cmn-btn2 {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  i {
+    font-size: 16px;
+  }
+}
+
+/* ----------- Extra Small Mini Devices (≤360px) ----------- */
+@media (max-width: 360px) {
+  .register-card {
+    padding: 15px 12px;
+  }
+
+  input {
+    font-size: 13px;
+  }
+
+  .cmn-btn, .cmn-btn2 {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .head {
+    font-size: 16px;
+  }
+}
+
+/* Simple Profile Upload */
+.profile-upload {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.profile-upload label {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--third-color);
+}
+
+.profile-upload input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: var(--border-radius);
+}
