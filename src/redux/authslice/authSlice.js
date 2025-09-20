@@ -2,12 +2,17 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { endPoints } from "../../api/endpoints/endPoints";
 import {AxiosInstance} from '../../api/axios/axios'
+import toast from "react-hot-toast";
 
 const initialState = {};
 
+
+
+//////////////-----------Patient Auth-----------///
+
 export const registerForm = createAsyncThunk("register",
     async(formData)=>{
-        let res = await AxiosInstance.post(endPoints.patient.auth.signup, formData)
+        let res = await AxiosInstance.post(endPoints.patient.auth.register, formData)
         let resData = res?.data;
         return resData;
     }
@@ -35,7 +40,7 @@ export const resendOtp = createAsyncThunk("resendOtp",
 
 export const loginForm = createAsyncThunk("loginForm",
     async(formData)=>{
-        let res = await AxiosInstance.post(endPoints.patient.auth.signin, formData)
+        let res = await AxiosInstance.post(endPoints.patient.auth.login, formData)
         let resData = res?.data;
         return resData;
     }
@@ -60,6 +65,12 @@ export const resetPassword = createAsyncThunk("resetPassword",
 
 
 
+/////////////----------------Doctor Auth-------------////
+
+
+
+
+
 const authSlice = createSlice({
     name: "Authentication",
     initialState,
@@ -68,7 +79,11 @@ const authSlice = createSlice({
         dev
 
         .addCase(registerForm.pending,(state,{payload}) => {})
-        .addCase(registerForm.fulfilled,(state,{payload}) => {})
+        .addCase(registerForm.fulfilled,(state,{payload}) => {
+            toast.success(payload.message)
+         localStorage.setItem("userEmail", payload.data.email);
+
+        })
         .addCase(registerForm.rejected,(state,{payload}) => {})
 
 
@@ -80,6 +95,12 @@ const authSlice = createSlice({
           .addCase(loginForm.pending,(state,{payload}) => {})
         .addCase(loginForm.fulfilled,(state,{payload}) => {})
         .addCase(loginForm.rejected,(state,{payload}) => {})
+
+
+
+
+
+
 
     }
 })

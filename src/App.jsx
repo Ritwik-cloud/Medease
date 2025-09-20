@@ -5,8 +5,10 @@ import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
 import { lazy, Suspense } from "react";
 
-const Login = lazy(() => import("./patient/auth/login/Login"));
-const Register = lazy(() => import("./patient/auth/register/Register"));
+const Login = lazy(() => import("./patient/auth/login/login"));
+const Register = lazy(() => import("./patient/auth/register/register"));
+const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
+
 const Spinner = lazy(() => import("./components/spinner/Spinner"));
 
 function PrivateRouter({ children }) {
@@ -22,6 +24,9 @@ function App() {
   const publicRoutes = [
     { path: "/auth/login", element: <Login /> },
     { path: "/auth/register", element: <Register /> },
+    { path: "/auth/verifyotp", element: <VerifyOtp /> },
+
+
   ];
 
   return (
