@@ -6,6 +6,7 @@ import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import "./verifyOtp.css";
 import { verifyOtp } from "../../../redux/authslice/authSlice";
+import { useNavigate } from "react-router-dom";
 
 // Validation schema with Yup
 const otpSchema = yup.object().shape({
@@ -22,6 +23,7 @@ const otpSchema = yup.object().shape({
 
 export default function VerifyOtp() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [resendTimer, setResendTimer] = useState(30);
   const useEmail = localStorage.getItem("userEmail");
 
@@ -43,14 +45,24 @@ export default function VerifyOtp() {
     }
   }, [resendTimer]);
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const otpPayload = {
       email: useEmail,
       otp: data.otp.join(""), 
     };
 
   
-    dispatch(verifyOtp(otpPayload));
+       
+       try {
+         await new Promise((resolve) => setTimeout(resolve, 1500));
+         const response = await dispatch(verifyOtp(otpPayload)).unwrap();
+   
+         if (response.status === true) {
+           navigate("/patient/auth/login");
+         }
+       } catch (error) {
+         console.error("Register error", error);
+       }
   };
 
   return (

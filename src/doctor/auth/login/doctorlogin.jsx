@@ -3,11 +3,9 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Eye, EyeClosed } from "lucide-react";
-import "../login/login.css";
+import "../login/doctorlogin.css";
 import loginImage from "../../../assets/images/authImage.jpg";
-import { loginForm } from "../../../redux/authslice/authSlice";
-import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+
 
 // Yup validation schema
 const schema = yup.object().shape({
@@ -21,10 +19,9 @@ const schema = yup.object().shape({
     .min(6, "Password must be at least 6 characters"),
 });
 
-const PatientLogin = () => {
+const DoctorLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+
   const {
     register,
     handleSubmit,
@@ -33,25 +30,12 @@ const PatientLogin = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data) => {
-    const loginPayload = {
-      email: data.email,
-      password: data.password
-    }
+  const onSubmit = ()=>{
+
+  }
+ 
    
-   
-        
-        try {
-          await new Promise((resolve) => setTimeout(resolve, 1500));
-          const response = await  dispatch(loginForm(loginPayload)).unwrap();
-    
-          if (response.status === true) {
-            navigate("/patient/cms/dashboard");
-          }
-        } catch (error) {
-          console.error("Register error", error);
-        }
-  };
+  
 
   return (
     <section className="login">
@@ -126,39 +110,7 @@ const PatientLogin = () => {
                 </div>
               </form>
 
-              <div className="or">
-                <h4>or</h4>
-              </div>
 
-              {/* Google Login */}
-              <div className="btn2">
-                <a href="#" className="cmn-btn">
-                  <div className="logo">
-                    <i className="fa-brands fa-google"></i>
-                  </div>
-                  <h4 className="googlle-sign">Sign With Google</h4>
-                </a>
-              </div>
-
-              {/* Facebook Login */}
-              <div className="btn3">
-                <a href="#" className="cmn-btn">
-                  <div className="logo">
-                    <i className="fa-brands fa-facebook-f"></i>
-                  </div>
-                  <h4 className="facebook-sign">Sign With Facebook</h4>
-                </a>
-              </div>
-
-              {/* Sign Up Option */}
-              <div className="new-act">
-                <h4>Don't have an account ?</h4>
-                <h4>
-                  <a href="#" className="sign-up">
-                    Sign Up
-                  </a>
-                </h4>
-              </div>
             </div>
           </div>
         </div>
@@ -167,4 +119,4 @@ const PatientLogin = () => {
   );
 };
 
-export default PatientLogin;
+export default DoctorLogin;

@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import "./register.css";
-import image from "../../../assets/images/img.png";
+import image from "../../../assets/images/authImage.jpg";
 import { useDispatch } from "react-redux";
 import { registerForm } from "../../../redux/authslice/authSlice";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeClosed } from "lucide-react";
 
 // yup validation schema (removed dob & address)
@@ -38,8 +38,8 @@ const schema = yup.object().shape({
 const Register = () => {
   const [img, setImg] = useState(null);
   const dispatch = useDispatch();
-    const [showPassword, setShowPasswrod] = useState(false);
-  
+  const navigate = useNavigate();
+  const [showPassword, setShowPasswrod] = useState(false);
 
   const {
     register,
@@ -70,7 +70,7 @@ const Register = () => {
   };
 
   // submit handler
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const formData = new FormData();
 
     formData.append("name", data.name);
@@ -80,7 +80,16 @@ const Register = () => {
     formData.append("password", data.password);
     formData.append("gender", data.gender);
 
-    dispatch(registerForm(formData));
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      const response = await dispatch(registerForm(formData)).unwrap();
+
+      if (response.status === true) {
+        navigate("/patient/auth/otp");
+      }
+    } catch (error) {
+      console.error("Register error", error);
+    }
   };
 
   return (
@@ -96,7 +105,7 @@ const Register = () => {
           <div className="col50">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="register-card">
-                <Link to={"doctor/auth/login"}>
+                <Link to={"../doctor/auth/login"}>
                   <h4 className="head">Are you a Doctor?</h4>
                 </Link>
 
@@ -116,7 +125,9 @@ const Register = () => {
                   placeholder="Email *"
                   aria-invalid={errors.email ? "true" : "false"}
                 />
-                {errors.email && <p className="error">{errors.email.message}</p>}
+                {errors.email && (
+                  <p className="error">{errors.email.message}</p>
+                )}
 
                 {/* Phone */}
                 <input
@@ -125,25 +136,26 @@ const Register = () => {
                   placeholder="Mobile Number"
                   aria-invalid={errors.phone ? "true" : "false"}
                 />
-                {errors.phone && <p className="error">{errors.phone.message}</p>}
+                {errors.phone && (
+                  <p className="error">{errors.phone.message}</p>
+                )}
 
                 {/* Password */}
-                  <div className="relative">
-                      <input
-                  {...register("password")}
-                  type={showPassword ? "text" : "password"}
-                  placeholder="Create Password *"
-                  aria-invalid={errors.password ? "true" : "false"}
+                <div className="relative">
+                  <input
+                    {...register("password")}
+                    type={showPassword ? "text" : "password"}
+                    placeholder="Create Password *"
+                    aria-invalid={errors.password ? "true" : "false"}
+                  />
+                  <span
+                    className="toggle-eye absolute right-5 bottom-8 cursor-pointer "
+                    onClick={() => setShowPasswrod(!showPassword)}
+                  >
+                    {showPassword ? <Eye size={20} /> : <EyeClosed size={20} />}
+                  </span>
+                </div>
 
-                />
-                <span
-                  className="toggle-eye absolute right-5 bottom-8 cursor-pointer "
-                  onClick={() => setShowPasswrod(!showPassword)}
-                >
-                  {showPassword ? <Eye size={20} /> : <EyeClosed size={20} />}
-                </span>
-              </div>
-              
                 {errors.password && (
                   <p className="error">{errors.password.message}</p>
                 )}
