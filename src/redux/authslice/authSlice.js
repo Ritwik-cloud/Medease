@@ -40,6 +40,14 @@ export const loginForm = createAsyncThunk("loginForm", async (formData) => {
   return resData;
 });
 
+
+export const PatientlogOut = createAsyncThunk("PatientlogOut", async () => {
+  let res = await AxiosInstance.post(endPoints.patient.auth.logOut);
+  let resData = res?.data;
+  return resData;
+});
+
+
 export const forgetPassword = createAsyncThunk(
   "forgotPassword",
   async (formData) => {
@@ -63,7 +71,17 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
+
+
+
+
 /////////////----------------Doctor Auth-------------////
+
+
+
+
+
+ 
 
 const authSlice = createSlice({
   name: "Authentication",
@@ -93,11 +111,28 @@ const authSlice = createSlice({
             path: "/",
             secure: true,
           });
+
+          
         }
       })
 
-      .addCase(loginForm.rejected, (state, { payload }) => {});
+      
+
+
+
+       .addCase(PatientlogOut.pending, (state, { payload }) => {})
+      .addCase(PatientlogOut.fulfilled, (state, { payload }) => {
+       if (payload.status === true) {
+      cookie.remove("token", { path: "/" });
+         toast.success(payload.message);
+       }
+
+      })
+      .addCase(PatientlogOut.rejected, (state, { payload }) => {})
   },
+
+
+
 });
 
 export const {} = authSlice.actions;

@@ -9,6 +9,7 @@ import { loginForm } from "../../../redux/authslice/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
+
 // Yup validation schema
 const schema = yup.object().shape({
   email: yup
@@ -46,10 +47,11 @@ const PatientLogin = () => {
           const response = await  dispatch(loginForm(loginPayload)).unwrap();
     
           if (response.status === true) {
+       
             navigate("/patient/cms/dashboard");
           }
         } catch (error) {
-          console.error("Register error", error);
+          console.error("login error", error);
         }
   };
 

@@ -74,7 +74,7 @@ export const endPoints = {
   /////-------------Doctor Availability-----///
   availability:{
     createAvailability:`/api/availability/create`,
-    getAvailableDoctor:`/api/availability/doctor/{doctorId}`,
+    getAvailableDoctor:`/api/availability/doctor`,
     dayOffForDoctor:`/api/availability/doctor/{doctorId}/dayoff`,
     getAllAvailableDoctors:`/api/availability`,
     specialDayOffForDoctor:`/api/availability/doctor/{doctorId}/special-dayoff`,
