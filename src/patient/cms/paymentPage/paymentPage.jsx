@@ -22,6 +22,7 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { BookAppointment } from "@/redux/appointmentslice/appointmentSlice";
 import { useDispatch } from "react-redux";
+import toast from "react-hot-toast";
 
 const PaymentBookingPage = () => {
   const realBookingData = JSON.parse(localStorage.getItem("bookingData"));
@@ -52,16 +53,22 @@ const PaymentBookingPage = () => {
       timeSlot: realBookingData.timeSlot,
     };
 
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      const response = await dispatch(BookAppointment(formData)).unwrap();
 
-      if (response.status === true) {
+     toast.success("Appointment Booked!")
         navigate(`/patient/cms/dashboard/doctors/booking/${id}/confirm`);
-      }
-    } catch (error) {
-      console.error("payment error", error);
-    }
+
+    // try {
+    //   await new Promise((resolve) => setTimeout(resolve, 1500));
+    //   const response = await dispatch(BookAppointment(formData)).unwrap();
+
+    //   if (response.status === true) {
+    //     navigate(`/patient/cms/dashboard/doctors/booking/${id}/confirm`);
+    //   }
+    // } catch (error) {
+    //   console.error("payment error", error);
+    // }
+
+
   };
 
   return (

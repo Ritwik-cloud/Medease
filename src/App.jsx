@@ -18,7 +18,7 @@ import PaymentPage from "./patient/cms/paymentPage/paymentPage";
 import ConfirmAppointment from "./patient/cms/confirmappointment/confirmAppointment";
 import PatientProfileDetails from "./patient/cms/profiledetails/profileDetails";
 import EditPatientProfile from "./patient/cms/updateProfile/updateProfile";
-import { LandingPage } from "./pages/landingPage/landingPage";
+import  LandingPage  from "./pages/landingPage/landingPage";
 const PatientLogin = lazy(() => import("./patient/auth/login/login"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
