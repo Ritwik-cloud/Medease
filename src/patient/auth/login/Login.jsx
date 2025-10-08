@@ -5,9 +5,9 @@ import * as yup from "yup";
 import { Eye, EyeClosed } from "lucide-react";
 import "../login/login.css";
 import loginImage from "../../../assets/images/authImage.jpg";
-import { loginForm } from "../../../redux/authslice/authSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { PatientLoginForm } from "@/redux/patient/authSlice/patientAuthSlice";
 
 
 // Yup validation schema
@@ -44,7 +44,7 @@ const PatientLogin = () => {
         
         try {
           await new Promise((resolve) => setTimeout(resolve, 1500));
-          const response = await  dispatch(loginForm(loginPayload)).unwrap();
+          const response = await  dispatch(PatientLoginForm(loginPayload)).unwrap();
     
           if (response.status === true) {
        

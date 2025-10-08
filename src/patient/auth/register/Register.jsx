@@ -5,9 +5,9 @@ import * as yup from "yup";
 import "./register.css";
 import image from "../../../assets/images/authImage.jpg";
 import { useDispatch } from "react-redux";
-import { registerForm } from "../../../redux/authslice/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeClosed } from "lucide-react";
+import { registerForm } from "@/redux/patient/authSlice/patientAuthSlice";
 
 // yup validation schema (removed dob & address)
 const schema = yup.object().shape({

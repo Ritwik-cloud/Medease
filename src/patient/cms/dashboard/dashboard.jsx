@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { PatientDashboard } from "@/redux/cmsSlice/cmsSlice";
 import { Button } from "@/components/ui/button";
-import { Menu, SidebarClose } from "lucide-react";
+import {  SidebarClose } from "lucide-react";
 import PatientSidebar from "../sidebar/sidebar";
+import { PatientDashboard } from "@/redux/patient/cmsSlice/patientCmsSlice";
 
 const DashboardPatient = () => {
   const [collapsed, setCollapsed] = useState(false);
   const dispatch = useDispatch();
-  const { patientDashboardDetails } = useSelector((state) => state.Cms);
+  const { patientDashboardDetails } = useSelector((state) => state.patientCms);
 
+  
   useEffect(() => {
     const fetchPatientDashboard = async () => {
       try {

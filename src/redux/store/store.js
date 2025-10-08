@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authSlice from "../authslice/authSlice";
-import cmsSlice from "../cmsSlice/cmsSlice";
 import appointmentSlice from "../appointmentslice/appointmentSlice";
 import availabilitySlice from "../availabilityslice/availabilitySlice";
+import patientAuthSlice from "../patient/authSlice/patientAuthSlice";
+import patientCmsSlice from "../patient/cmsSlice/patientCmsSlice";
 
 
 export const store = configureStore({
    reducer: {
-        auth: authSlice.reducer,
-        Cms: cmsSlice.reducer,
+        patientAuth: patientAuthSlice.reducer,
+       patientCms: patientCmsSlice.reducer,
         Appointment:appointmentSlice.reducer,
         Availability: availabilitySlice.reducer,
     }

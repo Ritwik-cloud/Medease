@@ -29,10 +29,10 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { PatientlogOut } from "@/redux/authslice/authSlice";
 import { useDispatch } from "react-redux";
+import { PatientlogOut } from "@/redux/patient/authSlice/patientAuthSlice";
 
-const PatientSidebar = ({
+const DoctorSidebar = ({
   collapsed,
   setCollapsed,
   name,
@@ -249,4 +249,4 @@ const PatientSidebar = ({
   );
 };
 
-export default PatientSidebar;
+export default DoctorSidebar;

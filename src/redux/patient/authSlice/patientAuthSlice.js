@@ -1,9 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { endPoints } from "../../api/endpoints/endPoints";
-import { AxiosInstance } from "../../api/axios/axios";
 import toast from "react-hot-toast";
 import { Cookies } from "react-cookie";
+import { AxiosInstance } from "@/api/axios/axios";
+import { endPoints } from "@/api/endpoints/endPoints";
 
 const initialState = {};
 const cookie = new Cookies();
@@ -34,7 +34,7 @@ export const resendOtp = createAsyncThunk("resendOtp", async (formData) => {
   return resData;
 });
 
-export const loginForm = createAsyncThunk("loginForm", async (formData) => {
+export const PatientLoginForm = createAsyncThunk("PatientLoginForm", async (formData) => {
   let res = await AxiosInstance.post(endPoints.patient.auth.login, formData);
   let resData = res?.data;
   return resData;
@@ -71,20 +71,8 @@ export const resetPassword = createAsyncThunk(
   }
 );
 
-
-
-
-
-/////////////----------------Doctor Auth-------------////
-
-
-
-
-
- 
-
-const authSlice = createSlice({
-  name: "Authentication",
+const patientAuthSlice = createSlice({
+  name: "PatientAuthentication",
   initialState,
   reducers: {},
   extraReducers: (dev) => {
@@ -103,8 +91,8 @@ const authSlice = createSlice({
       })
       .addCase(verifyOtp.rejected, (state, { payload }) => {})
 
-      .addCase(loginForm.pending, (state, { payload }) => {})
-      .addCase(loginForm.fulfilled, (state, { payload }) => {
+      .addCase(PatientLoginForm.pending, (state, { payload }) => {})
+      .addCase(PatientLoginForm.fulfilled, (state, { payload }) => {
         toast.success(payload.message);
         if (payload.status === true) {
           cookie.set("token", payload.token, {
@@ -115,6 +103,8 @@ const authSlice = createSlice({
           
         }
       })
+      .addCase(PatientLoginForm.rejected, (state, { payload }) => {})
+
 
       
 
@@ -135,5 +125,5 @@ const authSlice = createSlice({
 
 });
 
-export const {} = authSlice.actions;
-export default authSlice;
+export const {} = patientAuthSlice.actions;
+export default patientAuthSlice;

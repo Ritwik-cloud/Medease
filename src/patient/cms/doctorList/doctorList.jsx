@@ -1,12 +1,12 @@
 import { baseURL } from '@/api/axios/axios';
 import DoctorProfileCard from '@/components/doctorprofilecard/doctorProfileCard';
-import { GetDoctorList } from '@/redux/cmsSlice/cmsSlice';
+import { GetDoctorList } from '@/redux/patient/cmsSlice/patientCmsSlice';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function DoctorList() {
   const dispatch = useDispatch();
-  const { allDoctor } = useSelector((state) => state.Cms);
+  const { allDoctor } = useSelector((state) => state.patientCms);
 
   useEffect(() => {
     const fetchAllDoctors = async () => {

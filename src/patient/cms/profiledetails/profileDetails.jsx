@@ -14,13 +14,13 @@ import {
   Camera,
 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { PatientProfile } from "@/redux/cmsSlice/cmsSlice";
 import { useNavigate, useNavigation } from "react-router-dom";
+import { PatientProfile } from "@/redux/patient/cmsSlice/patientCmsSlice";
 
 const PatientProfileDetails = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate()
-  const { PatientProfileDetails, profileLoading } = useSelector((state) => state.Cms);
+  const { PatientProfileDetails, profileLoading } = useSelector((state) => state.patientCms);
 
   useEffect(() => {
     const fetchProfileData = async () => {

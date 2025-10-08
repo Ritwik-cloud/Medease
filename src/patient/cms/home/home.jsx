@@ -4,7 +4,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/com
 const Home = () => {
   return (
     <div className="space-y-4">
-      <h2 className="text-2xl font-bold mb-4">Welcome, John Smith</h2>
+      <h2 className="text-2xl font-bold mb-4">Welcome, Ritwik Bhowmik</h2>
       <Card>
         <CardHeader>
           <CardTitle>Patient Summary</CardTitle>

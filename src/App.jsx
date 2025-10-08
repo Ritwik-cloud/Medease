@@ -18,13 +18,14 @@ import PaymentPage from "./patient/cms/paymentPage/paymentPage";
 import ConfirmAppointment from "./patient/cms/confirmappointment/confirmAppointment";
 import PatientProfileDetails from "./patient/cms/profiledetails/profileDetails";
 import EditPatientProfile from "./patient/cms/updateProfile/updateProfile";
+import { LandingPage } from "./pages/landingPage/landingPage";
 const PatientLogin = lazy(() => import("./patient/auth/login/login"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
 
 const Spinner = lazy(() => import("./components/spinner/spinner"));
 const DashboardPatient = lazy(() => import("./patient/cms/dashboard/dashboard"));
-const DoctorLogin = lazy(() => import("./doctor/auth/login/doctorlogin"));
+
 
 ///---- private routing----///
 
@@ -40,6 +41,8 @@ function PrivateRouter({ children }) {
 
 function App() {
   const publicRoutes = [
+    { path: "/", element: <LandingPage /> },
+
     /////---------patient-------Authentication--------///
     { path: "/patient/auth/login", element: <PatientLogin /> },
     { path: "/patient/auth/register", element: <Register /> },
@@ -73,6 +76,34 @@ function App() {
         
       ],
     },
+
+
+
+
+    ///////-------------doctor dahboard---------------////
+
+    //  {
+    //   path: "/doctor/cms/dashboard",
+    //   element: (
+    //     <PrivateRouter>
+    //       <DashboardDoctor />
+    //     </PrivateRouter>
+    //   ),
+    //   children: [
+    //     { index: true, element: <Home /> }, // default tab
+    //     { path: "appointment", element: <CreateAppointment /> },
+    //     { path: "doctors", element: <DoctorList /> },
+    //     { path: "doctors/booking/:id", element: <AppointmentSlotBooking />   },
+    //    { path: "doctors/booking/:id/payment", element: <PaymentPage /> },
+    //    { path: "doctors/booking/:id/confirm", element: <ConfirmAppointment /> },
+
+
+    //     { path: "profile", element: <PatientProfileDetails /> },
+    //     { path: "updateprofile", element: <EditPatientProfile /> },
+
+        
+    //   ],
+    // },
 
     /////---------Doctor-------Dashboard-------///
   ];

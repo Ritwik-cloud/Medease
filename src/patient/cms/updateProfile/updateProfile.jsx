@@ -23,12 +23,12 @@ import {
   X,
 } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { PatientProfile, PatientUpdateProfile } from "@/redux/cmsSlice/cmsSlice";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { PatientProfile, PatientUpdateProfile } from "@/redux/patient/cmsSlice/patientCmsSlice";
 
 // Yup validation schema
 const schema = yup.object().shape({
@@ -74,7 +74,7 @@ const schema = yup.object().shape({
 const EditPatientProfile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { PatientProfileDetails, profileLoading } = useSelector((state) => state.Cms);
+  const { PatientProfileDetails, profileLoading } = useSelector((state) => state.patientCms);
   const [previewImage, setPreviewImage] = useState(null);
   const [imageFile, setImageFile] = useState(null);
 
