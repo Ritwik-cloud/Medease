@@ -1,56 +1,80 @@
 import React, { useState } from "react";
 import "./landingpage.css";
-import logo from '../../assets/images/logo.png'
-import banner from '../../assets/images/banner.png';
-import doctorsBanner from '../../assets/images/doctors-banner.png';
+import logo from "../../assets/images/logo.png";
+import banner from "../../assets/images/banner.png";
+import doctorsBanner from "../../assets/images/doctors-banner.png";
 
-// Specialities icons
-import urologyIcon from '../../assets/images/urology-icon.png';
-import neurologyIcon from '../../assets/images/neurology-icon.png';
-import orthopedicIcon from '../../assets/images/orthopedic-icon.png';
-import cardiologyIcon from '../../assets/images/cardiology-icon.png';
-import dentalIcon from '../../assets/images/dental-icon.png';
-import pediatristIcon from '../../assets/images/Pediatrist-icon.png';
-import psychiatristIcon from '../../assets/images/Psychiatrist-icon.png';
+import urologyIcon from "../../assets/images/urology-icon.png";
+import neurologyIcon from "../../assets/images/neurology-icon.png";
+import orthopedicIcon from "../../assets/images/orthopedic-icon.png";
+import cardiologyIcon from "../../assets/images/cardiology-icon.png";
+import dentalIcon from "../../assets/images/dental-icon.png";
+import pediatristIcon from "../../assets/images/Pediatrist-icon.png";
+import psychiatristIcon from "../../assets/images/Psychiatrist-icon.png";
 
-// Booking cards
-import bookingCard1 from '../../assets/images/booking-card1.png';
-import bookingCard2 from '../../assets/images/booking-card2.png';
+import bookingCard1 from "../../assets/images/booking-card1.png";
+import bookingCard2 from "../../assets/images/booking-card2.png";
 
-// Features
-import feature1 from '../../assets/images/feature1.png';
-import feature2 from '../../assets/images/feature2.png';
-import feature3 from '../../assets/images/feature3.png';
-import feature4 from '../../assets/images/feature4.png';
-import feature5 from '../../assets/images/feature5.png';
-import feature6 from '../../assets/images/feature6.png';
+import feature1 from "../../assets/images/feature1.png";
+import feature2 from "../../assets/images/feature2.png";
+import feature3 from "../../assets/images/feature3.png";
+import feature4 from "../../assets/images/feature4.png";
+import feature5 from "../../assets/images/feature5.png";
+import feature6 from "../../assets/images/feature6.png";
 
-// Blog cards
-import blogcard1 from '../../assets/images/blogcard-1.png';
-import blogcard2 from '../../assets/images/blogcard-2.png';
-import blogcard3 from '../../assets/images/blogcard-3.png';
-import blogDoctor1 from '../../assets/images/blog-doctor-1.png';
-import blogDoctor2 from '../../assets/images/blog-doctor-2.png';
+import blogcard1 from "../../assets/images/blogcard-1.png";
+import blogcard2 from "../../assets/images/blogcard-2.png";
+import blogcard3 from "../../assets/images/blogcard-3.png";
+import blogDoctor1 from "../../assets/images/blog-doctor-1.png";
+import blogDoctor2 from "../../assets/images/blog-doctor-2.png";
 
-// Review
-import review from '../../assets/images/review.png';
+import review from "../../assets/images/review.png";
 
-// Lower footer cards
-import lower1 from '../../assets/images/lower1.png';
-import lower2 from '../../assets/images/lower2.png';
-import lower3 from '../../assets/images/lower3.png';
-import lower4 from '../../assets/images/lower4.png';
-import lower5 from '../../assets/images/lower5.png';
-import lower6 from '../../assets/images/lower6.png';
+import lower1 from "../../assets/images/lower1.png";
+import lower2 from "../../assets/images/lower2.png";
+import lower3 from "../../assets/images/lower3.png";
+import lower4 from "../../assets/images/lower4.png";
+import lower5 from "../../assets/images/lower5.png";
+import lower6 from "../../assets/images/lower6.png";
+
 import { Link } from "react-router-dom";
 
-
-export const LandingPage = () => {
+const LandingPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Arrays for mapping
+  const specialties = [
+    { img: urologyIcon, name: "Urology" },
+    { img: neurologyIcon, name: "Neurology" },
+    { img: orthopedicIcon, name: "Orthopedic" },
+    { img: cardiologyIcon, name: "Cardiology" },
+    { img: dentalIcon, name: "Dentist" },
+    { img: pediatristIcon, name: "Pediatrist" },
+    { img: psychiatristIcon, name: "Psychiatrist" },
+  ];
+
+  const bookingCards = [bookingCard1, bookingCard2, bookingCard1]; 
+
+  const features = [
+    { img: feature1, name: "ICU" },
+    { img: feature2, name: "Laboratory" },
+    { img: feature3, name: "Operation" },
+    { img: feature4, name: "Medical" },
+    { img: feature5, name: "Patient ward" },
+    { img: feature6, name: "Test Room" },
+  ];
+
+  const blogCards = [
+    { card: blogcard1, doctor: blogDoctor1 },
+    { card: blogcard2, doctor: blogDoctor2 },
+    { card: blogcard3, doctor: blogDoctor1 },
+  ];
+
+  const lowerImages = [lower1, lower2, lower3, lower4, lower5, lower6];
 
   return (
     <>
@@ -58,29 +82,25 @@ export const LandingPage = () => {
       <header className="header">
         <div className="container">
           <nav>
-            <div 
-              className="hamburger" 
-              id="hamburger"
-              onClick={toggleMenu}
-            >
+            <div className="hamburger" id="hamburger" onClick={toggleMenu}>
               <div />
               <div />
               <div />
             </div>
             <div className="logo">
-              <a href="/">
+              <Link to="/">
                 <img src={logo} alt="logo" />
-              </a>
+              </Link>
             </div>
-            <ul className={`navlinks ${isMenuOpen ? 'active' : ''}`}>
+            <ul className={`navlinks ${isMenuOpen ? "active" : ""}`}>
               <li>
-                <a href="/">home</a>
+                <Link to="/">home</Link>
               </li>
               <li>
-                <a href="/about">about us</a>
+                <Link to="/about">about us</Link>
               </li>
               <li>
-                <a href="/contact">contact us</a>
+                <Link to="/contact">contact us</Link>
               </li>
               <li>
                 <div className="dropdown">
@@ -94,8 +114,8 @@ export const LandingPage = () => {
               </li>
             </ul>
             <div className="btn">
-              <Link to={'/patient/auth/register'} className="cmn-btn">
-                Login/ sign up
+              <Link to="/patient/auth/register" className="cmn-btn">
+                Login / sign up
               </Link>
             </div>
           </nav>
@@ -129,9 +149,8 @@ export const LandingPage = () => {
                   </div>
                   <div className="search-content">
                     <form onSubmit={(e) => e.preventDefault()}>
-                      <button className="search-btn" type="submit">
-                        <i className="fa-solid fa-magnifying-glass" />
-                        Search Doctors
+                      <button type="submit" className="search-btn">
+                        <i className="fa-solid fa-magnifying-glass" /> Search Doctors
                       </button>
                     </form>
                     <div className="search-info">
@@ -145,16 +164,16 @@ export const LandingPage = () => {
             </div>
             <div className="col40">
               <div className="blogcard">
-                <img src={banner} alt="Doctor" />
+                <img src={banner} alt="Doctor Banner" />
                 <div className="info-tag top-left">
                   <a href="#">
-                    <img src={doctorsBanner} alt="patients" />
+                    <img src={doctorsBanner} alt="Patients" />
                     15K+ Satisfied Patients
                   </a>
                 </div>
                 <div className="info-tag middle-left">
                   <a href="#">
-                    <img src={doctorsBanner} alt="doctors" />
+                    <img src={doctorsBanner} alt="Doctors" />
                     Meet our Doctors
                   </a>
                 </div>
@@ -167,7 +186,7 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Service Section */}
+      {/* Service */}
       <section className="service">
         <div className="container">
           <div className="content">
@@ -202,24 +221,16 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Specialities Section */}
+      {/* Specialities */}
       <section className="specialities">
         <div className="container">
           <div className="content">
             <h3>Clinic and Specialities</h3>
             <div className="specialities-row">
-              {[
-                { img: "urology-icon.png", name: "Urology" },
-                { img: "neurology-icon.png", name: "Neurology" },
-                { img: "orthopedic-icon.png", name: "Orthopedic" },
-                { img: "cardiology-icon.png", name: "Cardiology" },
-                { img: "dental-icon.png", name: "Dentist" },
-                { img: "Pediatrist-icon.png", name: "Pediatrist" },
-                { img: "Psychiatrist-icon.png", name: "Psychiatrist" },
-              ].map((spec, index) => (
-                <figure key={index}>
+              {specialties.map((spec, idx) => (
+                <figure key={idx}>
                   <a href="#">
-                    <img src={`${spec.img}`} alt={spec.name} loading="lazy" />
+                    <img src={spec.img} alt={spec.name} loading="lazy" />
                     <p>{spec.name}</p>
                   </a>
                 </figure>
@@ -229,34 +240,38 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Booking Section */}
+      {/* Booking */}
       <section className="booking">
         <div className="container">
           <div className="content">
             <h3>Book Our Doctor</h3>
           </div>
           <div className="row">
-            {[1, 2, 3].map((item, index) => (
+            {bookingCards.map((cardImg, index) => (
               <div className="col33" key={index}>
                 <div className="blogcard33">
                   <figure>
                     <a href="#">
-                      <img src={`/image/booking-card${item === 2 ? 2 : 1}.png`} alt="Doctor" />
+                      <img src={cardImg} alt="Doctor" />
                     </a>
                   </figure>
                   <div className="doctor-details">
                     <a href="#">
                       <h4>
-                        {item === 2 ? "Linda Tobin" : "Rubey Perin"}
+                        {index === 1 ? "Linda Tobin" : "Rubey Perin"}{" "}
                         <i className="fa-regular fa-circle-check" />
                       </h4>
                     </a>
                     <p>MDS - Periodontology and Oral Implantology, BDS</p>
                     <div className="stars">
                       {[...Array(5)].map((_, i) => (
-                        <i key={i} className="fa-solid fa-star" style={{ color: "#ffd43b" }} />
+                        <i
+                          key={i}
+                          className="fa-solid fa-star"
+                          style={{ color: "#ffd43b" }}
+                        />
                       ))}
-                      <p>({item === 2 ? 43 : 17})</p>
+                      <p>({index === 1 ? 43 : 17})</p>
                     </div>
                   </div>
                   <div className="other-details">
@@ -270,7 +285,7 @@ export const LandingPage = () => {
                     </div>
                     <div className="fees">
                       <i className="fa-solid fa-indian-rupee-sign" />
-                      <p>$300-$1000</p>
+                      <p>$300 - $1000</p>
                     </div>
                     <div className="booking-btn">
                       <a href="#" className="cmn-btn">
@@ -295,22 +310,15 @@ export const LandingPage = () => {
             <h3>Available Features in our clinic</h3>
           </div>
           <div className="features">
-            {[
-              { img: "feature1.png", name: "ICU" },
-              { img: "feature2.png", name: "Laboratory" },
-              { img: "feature3.png", name: "Operation" },
-              { img: "feature4.png", name: "Medical" },
-              { img: "feature5.png", name: "Patient ward" },
-              { img: "feature6.png", name: "Test Room" },
-            ].map((feature, index) => (
-              <div className="features-card" key={index}>
+            {features.map((feat, idx) => (
+              <div className="features-card" key={idx}>
                 <figure>
                   <a href="#">
-                    <img src={`/image/${feature.img}`} alt={feature.name} loading="lazy" />
+                    <img src={feat.img} alt={feat.name} loading="lazy" />
                   </a>
                 </figure>
                 <a href="#">
-                  <p>{feature.name}</p>
+                  <p>{feat.name}</p>
                 </a>
               </div>
             ))}
@@ -318,28 +326,28 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Blog Section */}
+      {/* Blog */}
       <section className="blog">
         <div className="container">
           <div className="content">
             <h3>Blogs and News</h3>
           </div>
           <div className="row">
-            {[1, 2, 3].map((item, index) => (
-              <div className="col33" key={index}>
+            {blogCards.map((b, idx) => (
+              <div className="col33" key={idx}>
                 <div className="blogcard33">
                   <figure>
                     <a href="#">
-                      <img src={`/image/blogcard-${item}.png`} alt="Blog" loading="lazy" />
+                      <img src={b.card} alt="Blog" loading="lazy" />
                     </a>
                   </figure>
                   <div className="blog-details">
                     <div className="blog-doctor">
                       <figure>
-                        <img src={`/image/blog-doctor-${item === 2 ? 2 : 1}.png`} alt="Doctor" loading="lazy" />
+                        <img src={b.doctor} alt="Doctor" loading="lazy" />
                       </figure>
                       <a href="#">
-                        <h4>Dr.Deborah Angel</h4>
+                        <h4>Dr. Deborah Angel</h4>
                       </a>
                     </div>
                     <p>
@@ -347,8 +355,8 @@ export const LandingPage = () => {
                     </p>
                     <p>Benefits of consulting with an Online Doctor.</p>
                     <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod..
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod..
                     </p>
                   </div>
                 </div>
@@ -363,38 +371,45 @@ export const LandingPage = () => {
         </div>
       </section>
 
-      {/* Testimonial Section */}
+      {/* Testimonial */}
       <section className="testimonial">
         <div className="container">
           <div className="content">
             <h3>Testimonials</h3>
           </div>
           <div className="row">
-            {[1, 2, 3].map((item, index) => (
-              <div className="col33" key={index}>
-                <div className="blogcard33">
-                  <div className="stars">
-                    {[...Array(5)].map((_, i) => (
-                      <i key={i} className="fa-solid fa-star" style={{ color: "#ffd43b" }} />
-                    ))}
-                  </div>
-                  <p>Nice Treatment</p>
-                  <p>
-                    I had a wonderful experience the staff was friendly and
-                    attentive, and Dr. took the time to explain everything clearly.
-                  </p>
-                  <div className="review-person">
-                    <figure>
-                      <img src="/image/review.png" alt="Reviewer" />
-                    </figure>
-                    <div className="review-name-location">
-                      <p>Deney Hendrawan</p>
-                      <p>India</p>
+            {Array(3)
+              .fill(0)
+              .map((_, idx) => (
+                <div className="col33" key={idx}>
+                  <div className="blogcard33">
+                    <div className="stars">
+                      {[...Array(5)].map((_, i) => (
+                        <i
+                          key={i}
+                          className="fa-solid fa-star"
+                          style={{ color: "#ffd43b" }}
+                        />
+                      ))}
+                    </div>
+                    <p>Nice Treatment</p>
+                    <p>
+                      I had a wonderful experience the staff was friendly and
+                      attentive, and Dr. took the time to explain everything
+                      clearly.
+                    </p>
+                    <div className="review-person">
+                      <figure>
+                        <img src={review} alt="Reviewer" />
+                      </figure>
+                      <div className="review-name-location">
+                        <p>Deney Hendrawan</p>
+                        <p>India</p>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
           </div>
         </div>
       </section>
@@ -409,11 +424,21 @@ export const LandingPage = () => {
                   <h6>Company</h6>
                 </div>
                 <ul>
-                  <a href="#"><li>About</li></a>
-                  <a href="#"><li>Features</li></a>
-                  <a href="#"><li>Works</li></a>
-                  <a href="#"><li>Careers</li></a>
-                  <a href="#"><li>Locations</li></a>
+                  <a href="#">
+                    <li>About</li>
+                  </a>
+                  <a href="#">
+                    <li>Features</li>
+                  </a>
+                  <a href="#">
+                    <li>Works</li>
+                  </a>
+                  <a href="#">
+                    <li>Careers</li>
+                  </a>
+                  <a href="#">
+                    <li>Locations</li>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -423,11 +448,21 @@ export const LandingPage = () => {
                   <h6>Treatment</h6>
                 </div>
                 <ul>
-                  <a href="#"><li>Dental</li></a>
-                  <a href="#"><li>Cardiac</li></a>
-                  <a href="#"><li>Spinal Cord</li></a>
-                  <a href="#"><li>Hair Growth</li></a>
-                  <a href="#"><li>Anemia & Disorder</li></a>
+                  <a href="#">
+                    <li>Dental</li>
+                  </a>
+                  <a href="#">
+                    <li>Cardiac</li>
+                  </a>
+                  <a href="#">
+                    <li>Spinal Cord</li>
+                  </a>
+                  <a href="#">
+                    <li>Hair Growth</li>
+                  </a>
+                  <a href="#">
+                    <li>Anemia & Disorder</li>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -437,11 +472,21 @@ export const LandingPage = () => {
                   <h6>Specialities</h6>
                 </div>
                 <ul>
-                  <a href="#"><li>Transplant</li></a>
-                  <a href="#"><li>Cardiologist</li></a>
-                  <a href="#"><li>Oncology</li></a>
-                  <a href="#"><li>Pediatrics</li></a>
-                  <a href="#"><li>Gynecology</li></a>
+                  <a href="#">
+                    <li>Transplant</li>
+                  </a>
+                  <a href="#">
+                    <li>Cardiologist</li>
+                  </a>
+                  <a href="#">
+                    <li>Oncology</li>
+                  </a>
+                  <a href="#">
+                    <li>Pediatrics</li>
+                  </a>
+                  <a href="#">
+                    <li>Gynecology</li>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -451,11 +496,21 @@ export const LandingPage = () => {
                   <h6>Utilities</h6>
                 </div>
                 <ul>
-                  <a href="#"><li>Pricing</li></a>
-                  <a href="#"><li>Contact</li></a>
-                  <a href="#"><li>Request a Quote</li></a>
-                  <a href="#"><li>Premium Membership</li></a>
-                  <a href="#"><li>Integrations</li></a>
+                  <a href="#">
+                    <li>Pricing</li>
+                  </a>
+                  <a href="#">
+                    <li>Contact</li>
+                  </a>
+                  <a href="#">
+                    <li>Request a Quote</li>
+                  </a>
+                  <a href="#">
+                    <li>Premium Membership</li>
+                  </a>
+                  <a href="#">
+                    <li>Integrations</li>
+                  </a>
                 </ul>
               </div>
             </div>
@@ -467,10 +522,18 @@ export const LandingPage = () => {
                 <p>Subscribe & Stay Updated from the MedEase</p>
                 <h6>Connect With Us</h6>
                 <div className="socials">
-                  <a href="https://facebook.com"><i className="fa-brands fa-facebook-f" /></a>
-                  <a href="https://instagram.com"><i className="fa-brands fa-instagram" /></a>
-                  <a href="https://twitter.com"><i className="fa-brands fa-x-twitter" /></a>
-                  <a href="https://linkedin.com"><i className="fa-brands fa-linkedin-in" /></a>
+                  <a href="https://facebook.com">
+                    <i className="fa-brands fa-facebook-f" />
+                  </a>
+                  <a href="https://instagram.com">
+                    <i className="fa-brands fa-instagram" />
+                  </a>
+                  <a href="https://twitter.com">
+                    <i className="fa-brands fa-x-twitter" />
+                  </a>
+                  <a href="https://linkedin.com">
+                    <i className="fa-brands fa-linkedin-in" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -484,12 +547,12 @@ export const LandingPage = () => {
           <div className="lower-content">
             <div className="copy-right">
               <p>
-                Copyright © 2025 <a href="/">MedEase.</a> All Rights Reserved
+                Copyright © 2025 <Link to="/">MedEase.</Link> All Rights Reserved
               </p>
             </div>
             <div className="cards">
-              {[1, 2, 3, 4, 5, 6].map((item) => (
-                <img key={item} src={`/image/lower${item}.png`} alt="Payment" loading="lazy" />
+              {lowerImages.map((imgSrc, idx) => (
+                <img key={idx} src={imgSrc} alt={`lower ${idx}`} loading="lazy" />
               ))}
             </div>
           </div>

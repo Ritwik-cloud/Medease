@@ -27,12 +27,12 @@ a {
   text-decoration: none;
   color: var(--COL-black);
 }
-a:hover {
+/* a:hover {
   color: var(--col-primary);
   transform: scale(1.1);
   font-size: 18px;
   transition: all 0.5s ease;
-}
+} */
 ul {
   list-style: none;
 }
@@ -83,11 +83,11 @@ ul {
   margin-left: 40px;
   margin-right: 20px;
 }
-.navlinks li a:hover {
+/* .navlinks li a:hover {
   color: var(--col-primary);
   transition: 0.3s ease;
   font-size: 22px;
-}
+} */
 nav {
   position: relative;
 }
@@ -137,11 +137,11 @@ nav {
   border-radius: 30px;
   transition: 0.5s ease;
 }
-.cmn-btn:hover {
+/* .cmn-btn:hover {
   background: var(--col-darkgreen);
   color: var(--col-white);
   transform: scale(1.1);
-}
+} */
 /* Hamburger Menu */
 .hamburger {
   display: none;
