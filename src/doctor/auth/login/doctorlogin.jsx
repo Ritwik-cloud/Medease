@@ -4,7 +4,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Eye, EyeClosed } from "lucide-react";
 import "../login/doctorlogin.css";
+import { useDispatch } from 'react-redux';
 import loginImage from "../../../assets/images/authImage.jpg";
+import {fetchDoctorLogin} from '../login/../../auth../../../redux/doctor/authSlice/doctorAuthSlice'
 
 
 // Yup validation schema
@@ -20,6 +22,7 @@ const schema = yup.object().shape({
 });
 
 const DoctorLogin = () => {
+   let dispatch=useDispatch();
   const [showPassword, setShowPassword] = useState(false);
 
   const {
@@ -30,8 +33,14 @@ const DoctorLogin = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = ()=>{
-
+  const onSubmit = (data)=>{
+    console.log("form submitted data:",data);
+    let form_value=
+    {
+      email:data?.email,
+      password:data?.password,
+    }
+    dispatch(fetchDoctorLogin(form_value));
   }
  
    
