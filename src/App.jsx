@@ -19,6 +19,16 @@ import ConfirmAppointment from "./patient/cms/confirmappointment/confirmAppointm
 import PatientProfileDetails from "./patient/cms/profiledetails/profileDetails";
 import EditPatientProfile from "./patient/cms/updateProfile/updateProfile";
 import  LandingPage  from "./pages/landingPage/landingPage";
+import DoctorLogin from "./doctor/auth/login/doctorlogin";
+import DashboardDoctor from "./doctor/cms/dashboard/dashboard";
+import DoctorAvailableTiming from "./doctor/cms/availabletiming/AvailableTiming";
+import PatientHome from "./patient/cms/home/home";
+import DoctorHome from "./doctor/cms/home/home";
+import DoctorAppointmentList from "./doctor/cms/appointmentList/appointmentList";
+import DoctorInvoicesPage from "./doctor/cms/invoices/invoices";
+import DoctorProfilePage from "./doctor/cms/profilePage/profilePage";
+import About from "./pages/aboutUs/aboutUs";
+import ContactUs from "./pages/contactUs/contactUs";
 const PatientLogin = lazy(() => import("./patient/auth/login/login"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
@@ -42,6 +52,10 @@ function PrivateRouter({ children }) {
 function App() {
   const publicRoutes = [
     { path: "/", element: <LandingPage /> },
+    { path: "/about", element: <About /> },
+    { path: "/contact", element: <ContactUs /> },
+
+
 
     /////---------patient-------Authentication--------///
     { path: "/patient/auth/login", element: <PatientLogin /> },
@@ -49,6 +63,8 @@ function App() {
     { path: "/patient/auth/verifyotp", element: <VerifyOtp /> },
 
     /////-----------doctor----- Authentication----------///
+    { path: "/doctor/auth/login", element: <DoctorLogin /> },
+
   ];
 
   const privateRoutes = [
@@ -62,7 +78,7 @@ function App() {
         </PrivateRouter>
       ),
       children: [
-        { index: true, element: <Home /> }, // default tab
+        { index: true, element: <PatientHome /> }, // default tab
         { path: "appointment", element: <CreateAppointment /> },
         { path: "doctors", element: <DoctorList /> },
         { path: "doctors/booking/:id", element: <AppointmentSlotBooking />   },
@@ -82,28 +98,24 @@ function App() {
 
     ///////-------------doctor dahboard---------------////
 
-    //  {
-    //   path: "/doctor/cms/dashboard",
-    //   element: (
-    //     <PrivateRouter>
-    //       <DashboardDoctor />
-    //     </PrivateRouter>
-    //   ),
-    //   children: [
-    //     { index: true, element: <Home /> }, // default tab
-    //     { path: "appointment", element: <CreateAppointment /> },
-    //     { path: "doctors", element: <DoctorList /> },
-    //     { path: "doctors/booking/:id", element: <AppointmentSlotBooking />   },
-    //    { path: "doctors/booking/:id/payment", element: <PaymentPage /> },
-    //    { path: "doctors/booking/:id/confirm", element: <ConfirmAppointment /> },
-
-
-    //     { path: "profile", element: <PatientProfileDetails /> },
-    //     { path: "updateprofile", element: <EditPatientProfile /> },
+     {
+      path: "/doctor/cms/dashboard",
+      element: (
+        <PrivateRouter>
+          <DashboardDoctor />
+        </PrivateRouter>
+      ),
+      children: [
+        { index: true, element: <DoctorHome /> },
+        { path: "appointments", element: <DoctorAppointmentList /> },
+        { path: "available-timing", element: <DoctorAvailableTiming /> },
+        { path: "invoices", element: <DoctorInvoicesPage />   },
+        { path: "profile", element: <DoctorProfilePage /> },
+        { path: "updateprofile", element: <EditPatientProfile /> },
 
         
-    //   ],
-    // },
+      ],
+    },
 
     /////---------Doctor-------Dashboard-------///
   ];

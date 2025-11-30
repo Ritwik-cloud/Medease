@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./landingpage.css";
+import "../PagesCss.css";
 import logo from "../../assets/images/logo.png";
 import banner from "../../assets/images/banner.png";
 import doctorsBanner from "../../assets/images/doctors-banner.png";

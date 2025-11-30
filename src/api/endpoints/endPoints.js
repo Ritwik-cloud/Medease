@@ -37,7 +37,7 @@ export const endPoints = {
 
     cms: {
        allDoctors: `/api/alldoctor`,
-      dashboard: `/api/docter/dashboard`,
+      dashboard: `/api/doctor/dashboard`,
       updateProfile: `/api/doctor/updateprofile`,
       doctorBySpeciality:`/api/doctor/getAllDoctorsbyspecilization`,
 

@@ -4,10 +4,10 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { Eye, EyeClosed } from "lucide-react";
 import "../login/doctorlogin.css";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import loginImage from "../../../assets/images/authImage.jpg";
-import {fetchDoctorLogin} from '../login/../../auth../../../redux/doctor/authSlice/doctorAuthSlice'
-
+import { fetchDoctorLogin } from "@/redux/doctor/authSlice/doctorAuthSlice";
+import { useNavigate } from "react-router-dom";
 
 // Yup validation schema
 const schema = yup.object().shape({
@@ -22,29 +22,37 @@ const schema = yup.object().shape({
 });
 
 const DoctorLogin = () => {
-   let dispatch=useDispatch();
+  let dispatch = useDispatch();
+  const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors , isSubmitting},
   } = useForm({
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = (data)=>{
-    console.log("form submitted data:",data);
-    let form_value=
-    {
-      email:data?.email,
-      password:data?.password,
+  const onSubmit = async (data) => {
+    console.log("form submitted data:", data);
+    let form_value = {
+      email: data?.email,
+      password: data?.password,
+    };
+
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
+      const response = await dispatch(fetchDoctorLogin(form_value)).unwrap();
+
+      if (response.status === true) {
+        navigate("/doctor/cms/dashboard");
+      }
+    } catch (error) {
+      console.error("doctorlogin error", error);
     }
-    dispatch(fetchDoctorLogin(form_value));
-  }
- 
-   
-  
+  };
 
   return (
     <section className="login">
@@ -52,7 +60,7 @@ const DoctorLogin = () => {
         <div className="row">
           {/* Left Image */}
           <div className="col50 rounded-md">
-            <figure >
+            <figure>
               <img className=" rounded-lg" src={loginImage} alt="login" />
             </figure>
           </div>
@@ -65,7 +73,10 @@ const DoctorLogin = () => {
               <form onSubmit={handleSubmit(onSubmit)}>
                 {/* Email Input */}
                 <div className="mb-4">
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Email
                   </label>
                   <input
@@ -76,16 +87,21 @@ const DoctorLogin = () => {
                     className={`mt-1 block w-full px-3 py-2 border ${
                       errors.email ? "border-red-500" : "border-gray-300"
                     } rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
-                   aria-invalid={errors.email ? "true" : "false"}
+                    aria-invalid={errors.email ? "true" : "false"}
                   />
                   {errors.email && (
-                    <p className="mt-2 text-sm text-red-600">{errors.email.message}</p>
+                    <p className="mt-2 text-sm text-red-600">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
 
                 {/* Password Input */}
                 <div className="mb-4">
-                  <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="password"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Password
                   </label>
                   <div className="relative">
@@ -103,23 +119,27 @@ const DoctorLogin = () => {
                       className="absolute inset-y-0 right-0 flex items-center pr-3 cursor-pointer"
                       onClick={() => setShowPassword(!showPassword)}
                     >
-                      {showPassword ? <Eye size={20} /> : <EyeClosed size={20} />}
+                      {showPassword ? (
+                        <Eye size={20} />
+                      ) : (
+                        <EyeClosed size={20} />
+                      )}
                     </span>
                   </div>
                   {errors.password && (
-                    <p className="mt-2 text-sm text-red-600">{errors.password.message}</p>
+                    <p className="mt-2 text-sm text-red-600">
+                      {errors.password.message}
+                    </p>
                   )}
                 </div>
 
                 {/* Submit Button */}
                 <div className="btn">
-                  <button type="submit" className="cmn-btn">
-                    <h4>Sign In</h4>
+                  <button type="submit" className="cmn-btn" disabled={isSubmitting}>
+                    <h4> {isSubmitting ? "Signing...": "Sign In"}</h4>
                   </button>
                 </div>
               </form>
-
-
             </div>
           </div>
         </div>

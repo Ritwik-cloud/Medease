@@ -5,7 +5,10 @@ import {AxiosInstance} from '../../api/axios/axios'
 import { Cookies } from "react-cookie";
 import toast from "react-hot-toast";
 
+
 const cookie = new Cookies()
+
+const initialState = {}
 
 ////--------------Book appointment----------///
 export const BookAppointment = createAsyncThunk("BookAppointment",

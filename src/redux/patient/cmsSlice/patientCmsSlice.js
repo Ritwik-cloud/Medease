@@ -1,7 +1,6 @@
 import { AxiosInstance } from "@/api/axios/axios";
 import { endPoints } from "@/api/endpoints/endPoints";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
 import { Cookies } from "react-cookie";
 import toast from "react-hot-toast";
 
