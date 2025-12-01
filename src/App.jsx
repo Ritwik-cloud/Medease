@@ -21,7 +21,7 @@ import EditPatientProfile from "./patient/cms/updateProfile/updateProfile";
 import  LandingPage  from "./pages/landingPage/landingPage";
 import DoctorLogin from "./doctor/auth/login/doctorlogin";
 import DashboardDoctor from "./doctor/cms/dashboard/dashboard";
-import DoctorAvailableTiming from "./doctor/cms/availabletiming/AvailableTiming";
+import DoctorAvailableTiming from "./doctor/cms/availabletiming/availableTiming";
 import PatientHome from "./patient/cms/home/home";
 import DoctorHome from "./doctor/cms/home/home";
 import DoctorAppointmentList from "./doctor/cms/appointmentList/appointmentList";

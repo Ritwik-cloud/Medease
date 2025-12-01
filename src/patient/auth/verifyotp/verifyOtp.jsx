@@ -5,7 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import "./verifyOtp.css";
-import { verifyOtp } from "../../../redux/authslice/authSlice";
+import { verifyOtp } from "../../../redux/patient/authSlice/patientAuthSlice";
 import { useNavigate } from "react-router-dom";
 
 // Validation schema with Yup
