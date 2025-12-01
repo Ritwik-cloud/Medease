@@ -8,33 +8,33 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./redux/store/store";
-import { lazy, Suspense } from "react";
 import { Cookies } from "react-cookie";
-import CreateAppointment from "./patient/cms/myAppointments/myAppointments";
-import Home from "./patient/cms/home/home";
-import DoctorList from "./patient/cms/doctorList/doctorList";
-import AppointmentSlotBooking from "./patient/cms/appointmentSlotBooking/appointmentSlotBooking";
-import PaymentPage from "./patient/cms/paymentPage/paymentPage";
-import ConfirmAppointment from "./patient/cms/confirmappointment/confirmAppointment";
-import PatientProfileDetails from "./patient/cms/profiledetails/profileDetails";
-import EditPatientProfile from "./patient/cms/updateProfile/updateProfile";
-import  LandingPage  from "./pages/landingPage/landingPage";
-import DoctorLogin from "./doctor/auth/login/doctorlogin";
-import DashboardDoctor from "./doctor/cms/dashboard/dashboard";
-import DoctorAvailableTiming from "./doctor/cms/availabletiming/availableTiming";
-import PatientHome from "./patient/cms/home/home";
-import DoctorHome from "./doctor/cms/home/home";
-import DoctorAppointmentList from "./doctor/cms/appointmentList/appointmentList";
-import DoctorInvoicesPage from "./doctor/cms/invoices/invoices";
-import DoctorProfilePage from "./doctor/cms/profilePage/profilePage";
-import About from "./pages/aboutUs/aboutUs";
-import ContactUs from "./pages/contactUs/contactUs";
-const PatientLogin = React.lazy(() => import("./patient/auth/login/login.jsx"));
+import React, { lazy, Suspense } from "react";
+
+const CreateAppointment = lazy(() => import("./patient/cms/myAppointments/myAppointments"));
+const Home = lazy(() => import("./patient/cms/home/home"));
+const DoctorList = lazy(() => import("./patient/cms/doctorList/doctorList"));
+const AppointmentSlotBooking = lazy(() => import("./patient/cms/appointmentSlotBooking/appointmentSlotBooking"));
+const PaymentPage = lazy(() => import("./patient/cms/paymentPage/paymentPage"));
+const ConfirmAppointment = lazy(() => import("./patient/cms/confirmappointment/confirmAppointment"));
+const PatientProfileDetails = lazy(() => import("./patient/cms/profiledetails/profileDetails"));
+const EditPatientProfile = lazy(() => import("./patient/cms/updateProfile/updateProfile"));
+const LandingPage = lazy(() => import("./pages/landingPage/landingPage"));
+const DoctorLogin = lazy(() => import("./doctor/auth/login/doctorlogin"));
+const DashboardDoctor = lazy(() => import("./doctor/cms/dashboard/dashboard"));
+const DoctorAvailableTiming = lazy(() => import("./doctor/cms/availabletiming/availableTiming"));
+const PatientHome = lazy(() => import("./patient/cms/home/home"));
+const DoctorHome = lazy(() => import("./doctor/cms/home/home"));
+const DoctorAppointmentList = lazy(() => import("./doctor/cms/appointmentList/appointmentList"));
+const DoctorInvoicesPage = lazy(() => import("./doctor/cms/invoices/invoices"));
+const DoctorProfilePage = lazy(() => import("./doctor/cms/profilePage/profilePage"));
+const About = lazy(() => import("./pages/aboutUs/aboutUs"));
+const ContactUs = lazy(() => import("./pages/contactUs/contactUs"));
+const PatientLogin = lazy(() => import("./patient/auth/login/login.jsx"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
-
-const Spinner = lazy(() => import("./components/spinner/spinner"));
-const DashboardPatient = lazy(() => import("./patient/cms/dashboard/dashboard"));
+const Spinner = lazy(() => import("./components/spinner/spinner.jsx"));
+const DashboardPatient = lazy(() => import("./patient/cms/dashboard/dashboard.jsx"));
 
 
 ///---- private routing----///
