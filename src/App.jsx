@@ -30,11 +30,11 @@ const DoctorInvoicesPage = lazy(() => import("./doctor/cms/invoices/invoices"));
 const DoctorProfilePage = lazy(() => import("./doctor/cms/profilePage/profilePage"));
 const About = lazy(() => import("./pages/aboutUs/aboutUs"));
 const ContactUs = lazy(() => import("./pages/contactUs/contactUs"));
-const PatientLogin = lazy(() => import("./patient/auth/login/login.jsx"));
+const PatientLogin = lazy(() => import("./patient/auth/login/login"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
-const Spinner = lazy(() => import("./components/spinner/spinner.jsx"));
-const DashboardPatient = lazy(() => import("./patient/cms/dashboard/dashboard.jsx"));
+const Spinner = lazy(() => import("./components/spinner/spinner"));
+const DashboardPatient = lazy(() => import("./patient/cms/dashboard/dashboard"));
 
 
 ///---- private routing----///
