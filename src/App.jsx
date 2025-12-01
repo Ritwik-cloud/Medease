@@ -29,7 +29,7 @@ import DoctorInvoicesPage from "./doctor/cms/invoices/invoices";
 import DoctorProfilePage from "./doctor/cms/profilePage/profilePage";
 import About from "./pages/aboutUs/aboutUs";
 import ContactUs from "./pages/contactUs/contactUs";
-const PatientLogin = lazy(() => import("./patient/auth/login/login.jsx"));
+const PatientLogin = React.lazy(() => import("./patient/auth/login/login.jsx"));
 const Register = lazy(() => import("./patient/auth/register/Register"));
 const VerifyOtp = lazy(() => import("./patient/auth/verifyotp/verifyOtp"));
 
